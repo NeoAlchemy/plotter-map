@@ -47,6 +47,17 @@ async function initMap(addresses) {
     center: {lat: 32.9398347, lng: -97.129254 },
     radius: 16093.4
   }); 
+
+  new Circle({
+    strokeColor: "#000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#000",
+    fillOpacity: 0.35,
+    map,
+    center: {lat: 32.9398347, lng: -97.129254 },
+    radius: 160.934
+  }); 
 }
   
 document.getElementById('fileInput').addEventListener('change', function(event) {
