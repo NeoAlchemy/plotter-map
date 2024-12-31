@@ -1,8 +1,9 @@
 
 
 async function initMap(addresses) {
-  const { Map } = await google.maps.importLibrary("maps");
+  const { Map, Circle } = await google.maps.importLibrary("maps");
   const { Marker } = await google.maps.importLibrary("marker");
+  const { Geocoder } = await google.maps.importLibrary("geocoding")
 
   // initialize services
   const geocoder = new Map.Geocoder();
@@ -12,7 +13,7 @@ async function initMap(addresses) {
   if (addresses) {
     addresses.forEach((address) => {
       console.log("address: " + address)
-      geocoder.geocode({ address }, (results, status) => {
+      Geocoder.geocode({ address }, (results, status) => {
         if (status === "OK") {
           const marker = new Marker.AdvancedMarkerElement({
             map,
@@ -21,28 +22,22 @@ async function initMap(addresses) {
         });
         } else {
           console.error(`Geocode was not successful for the following reason: ${status}`);
-          document.getElementById("geocodeErrors").innerHTML = document.getElementById("geocodeErrors").innerHTML + address + "<br/>"
+          document.getElementById("geocodeErrors").innerHTML += address + "<br/>"
         }
       });
     });
   
   }
   
-  var center = new google.maps.LatLng(32.9398347,-97.129254);
-  
-  // Radius in meters (e.g., 500 meters)
-  var radius = 16093.4;
-
-  // Create a circle object
-  var circle = new Marker.circle({
+  new Circle({
     strokeColor: "#0000AA",
     strokeOpacity: 0.8,
     strokeWeight: 2,
     fillColor: "#0000AA",
     fillOpacity: 0.35,
     map,
-    center: center,
-    radius: radius
+    center: {lat: 32.9398347, lng: -97.129254 },
+    radius: 16093.4
   }); 
 }
   
