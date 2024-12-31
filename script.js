@@ -3,7 +3,7 @@ function initMap(addresses) {
     const bounds = new google.maps.LatLngBounds();
     const markersArray = [];
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 55.53, lng: 9.4 },
+      center: { lat: 32.9508297, lng: -97.2816533 },
       zoom: 10,
     });
     // initialize services
@@ -12,8 +12,10 @@ function initMap(addresses) {
     // build request
     
     addresses.forEach((address) => {
+      console.log("address: " + address)
       geocoder.geocode({ address }, (results, status) => {
         if (status === "OK") {
+          console.log("address")
           const marker = new google.maps.Marker({
             map,
             position: results[0].geometry.location,
