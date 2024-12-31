@@ -23,6 +23,7 @@ async function initMap(addresses) {
       geocoder.geocode({ "address": address }, (results, status) => {
         if (status === "OK") {
           new AdvancedMarkerElement({
+            map,
             position: results[0].geometry.location,
             title: 'Customer',
         });
@@ -42,6 +43,7 @@ async function initMap(addresses) {
     strokeWeight: 2,
     fillColor: "#0000AA",
     fillOpacity: 0.35,
+    map,
     center: {lat: 32.9398347, lng: -97.129254 },
     radius: 16093.4
   }); 
