@@ -6,6 +6,14 @@ async function initMap(addresses) {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const { Geocoder } = await google.maps.importLibrary("geocoding")
 
+  // Map
+  const map = new Map(document.getElementById("map"), {
+    center: { lat: 32.9508297, lng: -97.2816533 },
+    zoom: 10,
+    mapId: "4ba089be2a252761",
+  });
+
+
   // build request
   if (addresses) {
     addresses.forEach((address) => {
