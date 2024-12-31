@@ -10,9 +10,12 @@ async function initMap(addresses) {
   if (addresses) {
     addresses.forEach((address) => {
       console.log("address: " + address)
-      (new Geocoder()).geocode({ "address": address }, (results, status) => {
+      const geocoder = new Geocoder();
+      const marker = new Marker();
+
+      geocoder.geocode({ "address": address }, (results, status) => {
         if (status === "OK") {
-          const marker = new Marker.AdvancedMarkerElement({
+          marker.AdvancedMarkerElement({
             map,
             position: results[0].geometry.location,
             title: 'Customer',
