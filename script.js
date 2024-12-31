@@ -1,6 +1,6 @@
 
 
-function setAddress(addresses) {
+function initMaps(addresses) {
   var map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.9508297, lng: -97.2816533 },
     zoom: 10,
@@ -10,22 +10,24 @@ function setAddress(addresses) {
   const geocoder = new google.maps.Geocoder();
   const service = new google.maps.DistanceMatrixService();
   // build request
-  
-  addresses.forEach((address) => {
-    console.log("address: " + address)
-    geocoder.geocode({ address }, (results, status) => {
-      if (status === "OK") {
-        const marker = new google.maps.Marker({
-          map,
-          position: results[0].geometry.location,
-        });
-      } else {
-        console.error(`Geocode was not successful for the following reason: ${status}`);
-        document.getElementById("geocodeErrors").innerHTML = document.getElementById("geocodeErrors").innerHTML + address + "<br/>"
-      }
+  if (addresses) {
+    addresses.forEach((address) => {
+      console.log("address: " + address)
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === "OK") {
+          const marker = new google.maps.Marker({
+            map,
+            position: results[0].geometry.location,
+          });
+        } else {
+          console.error(`Geocode was not successful for the following reason: ${status}`);
+          document.getElementById("geocodeErrors").innerHTML = document.getElementById("geocodeErrors").innerHTML + address + "<br/>"
+        }
+      });
     });
-  });
-
+  
+  }
+  
   drawCircle();
 }
   
