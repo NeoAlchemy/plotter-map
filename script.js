@@ -1,14 +1,11 @@
 
 
 async function initMap(addresses) {
+  // initialize services
   const { Map, Circle } = await google.maps.importLibrary("maps");
   const { Marker } = await google.maps.importLibrary("marker");
   const { Geocoder } = await google.maps.importLibrary("geocoding")
 
-  // initialize services
-  const geocoder = new Map.Geocoder();
-  //const service = new google.maps.DistanceMatrixService();
-  
   // build request
   if (addresses) {
     addresses.forEach((address) => {
@@ -29,6 +26,7 @@ async function initMap(addresses) {
   
   }
   
+  // add circle
   new Circle({
     strokeColor: "#0000AA",
     strokeOpacity: 0.8,
