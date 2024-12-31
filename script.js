@@ -35,7 +35,6 @@ function initMap(addresses) {
   // Radius in meters (e.g., 500 meters)
   var radius = 16093.4;
 
-
   // Create a circle object
   var circle = new google.maps.Circle({
     strokeColor: "#0000AA",
