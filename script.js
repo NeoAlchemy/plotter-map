@@ -1,10 +1,11 @@
-const map = new google.maps.Map(document.getElementById("map"), {
-  center: { lat: 32.9508297, lng: -97.2816533 },
-  zoom: 10,
-});
+
 
 function setAddress(addresses) {
-  
+  var map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 32.9508297, lng: -97.2816533 },
+    zoom: 10,
+  });
+
   // initialize services
   const geocoder = new google.maps.Geocoder();
   const service = new google.maps.DistanceMatrixService();
@@ -58,5 +59,5 @@ function drawCircle() {
     fillColor: '#0000AA' // Optional fill color
   });
 
-  circle.setMap(map); 
+  circle.setMap(window.map); 
 }
