@@ -2,7 +2,7 @@
 
 async function initMap(addresses) {
   const { Map } = await google.maps.importLibrary("maps");
-  const { Marker } = await agoogle.maps.importLibrary("marker");
+  const { Marker } = await google.maps.importLibrary("marker");
 
   // initialize services
   const geocoder = new Map.Geocoder();
