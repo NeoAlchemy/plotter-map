@@ -38,7 +38,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
       reader.onload = function(e) {
           const content = e.target.result;
           let rows = content.split(/\n/)
-          window.setAddress(rows)
+          window.initMap(rows)
       };
       reader.readAsText(file);
   }
