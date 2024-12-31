@@ -1,22 +1,26 @@
 
 
-function initMap(addresses) {
-  var map = new google.maps.Map(document.getElementById("map"), {
+async function initMap(addresses) {
+  const { Map } = google.maps.importLibrary("maps");
+  const { Marker } = agoogle.maps.importLibrary("marker");
+
+  var map = new Map(document.getElementById("map"), {
     center: { lat: 32.9508297, lng: -97.2816533 },
     zoom: 10,
     mapId: "PLOTTER"
   });
 
   // initialize services
-  const geocoder = new google.maps.Geocoder();
-  const service = new google.maps.DistanceMatrixService();
+  const geocoder = new Map.Geocoder();
+  //const service = new google.maps.DistanceMatrixService();
+  
   // build request
   if (addresses) {
     addresses.forEach((address) => {
       console.log("address: " + address)
       geocoder.geocode({ address }, (results, status) => {
         if (status === "OK") {
-          const marker = new google.maps.marker.AdvancedMarkerElement({
+          const marker = new Marker.AdvancedMarkerElement({
             map,
             position: results[0].geometry.location,
             title: 'Customer',
@@ -36,7 +40,7 @@ function initMap(addresses) {
   var radius = 16093.4;
 
   // Create a circle object
-  var circle = new google.maps.Circle({
+  var circle = new Marker.circle({
     strokeColor: "#0000AA",
     strokeOpacity: 0.8,
     strokeWeight: 2,
