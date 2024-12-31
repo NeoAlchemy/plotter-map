@@ -28,24 +28,6 @@ function initMap(addresses) {
   
   }
   
-  drawCircle();
-}
-  
-document.getElementById('fileInput').addEventListener('change', function(event) {
-  const file = event.target.files[0];
-  if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-          const content = e.target.result;
-          let rows = content.split(/\n/)
-          window.initMap(rows)
-      };
-      reader.readAsText(file);
-  }
-});
-
-
-function drawCircle() {
   var center = new google.maps.LatLng(32.9398347,-97.129254);
   
   // Radius in meters (e.g., 500 meters)
@@ -64,3 +46,17 @@ function drawCircle() {
     radius: radius
   }); 
 }
+  
+document.getElementById('fileInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          const content = e.target.result;
+          let rows = content.split(/\n/)
+          window.initMap(rows)
+      };
+      reader.readAsText(file);
+  }
+});
+
