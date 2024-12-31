@@ -1,14 +1,8 @@
 
 
 async function initMap(addresses) {
-  const { Map } = google.maps.importLibrary("maps");
-  const { Marker } = agoogle.maps.importLibrary("marker");
-
-  var map = new Map(document.getElementById("map"), {
-    center: { lat: 32.9508297, lng: -97.2816533 },
-    zoom: 10,
-    mapId: "PLOTTER"
-  });
+  const { Map } = await google.maps.importLibrary("maps");
+  const { Marker } = await agoogle.maps.importLibrary("marker");
 
   // initialize services
   const geocoder = new Map.Geocoder();
