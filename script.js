@@ -3,7 +3,7 @@
 async function initMap(addresses) {
   // initialize services
   const { Map, Circle } = await google.maps.importLibrary("maps");
-  const { Marker } = await google.maps.importLibrary("marker");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const { Geocoder } = await google.maps.importLibrary("geocoding")
 
   // build request
@@ -11,11 +11,10 @@ async function initMap(addresses) {
     addresses.forEach((address) => {
       console.log("address: " + address)
       const geocoder = new Geocoder();
-      const marker = new Marker();
 
       geocoder.geocode({ "address": address }, (results, status) => {
         if (status === "OK") {
-          marker.AdvancedMarkerElement({
+          new AdvancedMarkerElement({
             position: results[0].geometry.location,
             title: 'Customer',
         });
