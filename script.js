@@ -49,10 +49,10 @@ async function initMap(addresses) {
   }); 
 
   new Circle({
-    strokeColor: "#000",
+    strokeColor: "#FFF",
     strokeOpacity: 0.8,
     strokeWeight: 2,
-    fillColor: "#000",
+    fillColor: "#FFF",
     fillOpacity: 0.35,
     map,
     center: {lat: 32.9398347, lng: -97.129254 },
