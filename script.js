@@ -53,7 +53,7 @@ function initMap(addresses) {
             const content = e.target.result;
             console.log(content);
             let rows = content.split(/\n/)
-            window.initMap(content)
+            window.initMap(rows)
         };
         reader.readAsText(file);
     }
