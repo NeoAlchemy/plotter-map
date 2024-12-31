@@ -54,12 +54,13 @@ function drawCircle() {
 
   // Create a circle object
   var circle = new google.maps.Circle({
+    strokeColor: "#0000AA",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#0000AA",
+    fillOpacity: 0.35,
+    map,
     center: center,
-    radius: radius,
-    strokeColor: '#0000AA', 
-    strokeWeight: 2, // Line thickness
-    fillColor: '#0000AA' // Optional fill color
-  });
-
-  circle.setMap(window.map); 
+    radius: radius
+  }); 
 }
